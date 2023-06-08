@@ -36,6 +36,9 @@ module.exports = {
           fontWeight: 'bold'
         }
       ]
+    },
+    maxWidth: {
+      container: '86.5rem'
     }
   },
   plugins: []
