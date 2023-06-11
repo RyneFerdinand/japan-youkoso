@@ -35,7 +35,8 @@ module.exports = {
         {
           fontWeight: 'bold'
         }
-      ]
+      ],
+      small: ['0.75rem']
     },
     maxWidth: {
       container: '86.5rem'
