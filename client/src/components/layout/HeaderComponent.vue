@@ -38,6 +38,9 @@
             <RouterLink :to="{ name: 'home' }" class="hover:underline">Home</RouterLink>
           </li>
           <li>
+            <RouterLink :to="{ name: 'step-list' }" class="hover:underline">Step</RouterLink>
+          </li>
+          <li>
             <RouterLink :to="{ name: 'home' }" class="hover:underline">Roadmap</RouterLink>
           </li>
           <li>

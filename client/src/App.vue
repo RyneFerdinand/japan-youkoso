@@ -1,5 +1,5 @@
 <template>
-  <div class="font-main">
+  <div class="font-main bg-[#f9f9f9]">
     <HeaderComponent />
     <RouterView />
     <FooterComponent />
