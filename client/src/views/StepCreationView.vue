@@ -17,6 +17,7 @@
           <label class="font-bold">Content</label>
           <QuillEditor theme="snow" v-model:content="content" contentType="html" />
         </div>
+        <div class="mt-6"><input type="checkbox" v-model="mandatory" /> Mandatory</div>
         <button
           type="submit"
           class="text-center bg-light border-[1px] border-highlight w-full mt-6 py-2 rounded-sm text-highlight font-bold hover:bg-highlight hover:text-light transition-colors"
@@ -43,14 +44,21 @@ export default {
   data() {
     return {
       title: '',
-      content: ''
+      content: '',
+      mandatory: false
     }
   },
   methods: {
     async submitHandler() {
-      const stepObject = { title: this.title, content: this.content, approved: 0 }
+      const stepObject = {
+        title: this.title,
+        content: this.content,
+        mandatory: this.mandatory,
+        user_id: 1,
+        approved: 0
+      }
       await Step.create(stepObject)
-      this.$router.push('/')
+      this.$router.push('/step/list')
     }
   }
 }

@@ -26,7 +26,7 @@
       "content": "<h1><strong>Hello !</strong></h1><h2>Hey!</h2><h3>Hi</h3><p>Hello my guy !</p><p><br></p><p><strong>Stop man !</strong></p><p><strong><em><u>What?</u></em></strong></p><p><u>wait</u></p><p><a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">google</a></p><p>List</p><ol><li>stap</li><li>stop</li><li>stip</li><li>step</li><li>stup</li></ol><p>Helo</p><ul><li>Hello</li><li>Hey</li></ul><p>jlkjlkj</p>",
       "user_id": "1",
       "id": 4,
-      "approved": 0
+      "approved": 1
     },
     {
       "title": "testing",
@@ -90,6 +90,14 @@
       "user_id": "1",
       "id": 13,
       "approved": 0
+    },
+    {
+      "title": "Steps",
+      "content": "<h1>An awesome step</h1>",
+      "mandatory": true,
+      "user_id": "1",
+      "approved": 0,
+      "id": 14
     }
   ],
   "users": [
