@@ -75,7 +75,7 @@
   };
   </script>
   
-  <style>
+  <style scoped>
 .registration-page {
   display: flex;
   background: white;
@@ -98,8 +98,8 @@
   flex: 3;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-top: 20px;
+  justify-items: left;
+  margin-top: 50px;
   padding-left: 15%;
   padding-right: 15%;
 }
@@ -118,9 +118,9 @@
 }
 
 .form-header {
-  text-align: center;
+  text-align: left;
   font-weight: 900;
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 36px;
   margin-bottom: 20px;
 
