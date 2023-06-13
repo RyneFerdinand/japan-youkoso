@@ -1,10 +1,10 @@
 <template>
-  <div class="bg-light shadow-md rounded-md p-8 min-w-fit flex gap-4">
-    <div class="flex flex-col items-center w-fit">
+  <div class="bg-light shadow-md rounded-md p-8 flex gap-4 w-full">
+    <!-- <div class="flex flex-col items-center w-fit">
       <v-icon name="md-arrowdropup-sharp" scale="2" class="cursor-pointer hover:fill-highlight" />
       <p class="font-semibold">32</p>
       <v-icon name="md-arrowdropdown-sharp" scale="2" class="cursor-pointer hover:fill-highlight" />
-    </div>
+    </div> -->
     <div>
       <h1 class="text-head-1 text-highlight" v-if="this.type === 'step'">{{ content.title }}</h1>
       <h4 class="text-head-4" v-if="this.type === 'comment'">{{ content.user.name }}</h4>

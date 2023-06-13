@@ -2,97 +2,110 @@
   "steps": [
     {
       "title": "Creating SIM Cards",
-      "content": "<h4>Creating SIM Cards</h4><p>A simple guide t create SIM Cards</p>",
+      "content": "<h4>Creating SIM Cards</h4><p>A simple guide to create SIM Cards Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi atque veniam libero sed nulla, facere vero doloremque quas quibusdam consequuntur?</p>",
       "id": 1,
       "approved": 1,
+      "mandatory": true,
       "user_id": 1
     },
     {
-      "title": "test",
+      "title": "test1",
       "content": "<p>testing</p>",
       "user_id": "1",
       "id": 2,
+      "mandatory": false,
       "approved": 0
     },
     {
-      "title": "testing",
+      "title": "testing2",
       "content": "<p>testing !</p>",
       "user_id": "1",
       "id": 3,
+      "mandatory": false,
       "approved": 1
     },
     {
-      "title": "testing",
+      "title": "testing3",
       "content": "<h1><strong>Hello !</strong></h1><h2>Hey!</h2><h3>Hi</h3><p>Hello my guy !</p><p><br></p><p><strong>Stop man !</strong></p><p><strong><em><u>What?</u></em></strong></p><p><u>wait</u></p><p><a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">google</a></p><p>List</p><ol><li>stap</li><li>stop</li><li>stip</li><li>step</li><li>stup</li></ol><p>Helo</p><ul><li>Hello</li><li>Hey</li></ul><p>jlkjlkj</p>",
       "user_id": "1",
       "id": 4,
+      "mandatory": true,
       "approved": 1
     },
     {
-      "title": "testing",
+      "title": "testing4",
       "content": "<h1><strong>Hello !</strong></h1><h2>Hey!</h2><h3>Hi</h3><p>Hello my guy !</p><p><br></p><p><strong>Stop man !</strong></p><p><strong><em><u>What?</u></em></strong></p><p><u>wait</u></p><p><a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">google</a></p><p>List</p><ol><li>stap</li><li>stop</li><li>stip</li><li>step</li><li>stup</li></ol><p>Helo</p><ul><li>Hello</li><li>Hey</li></ul><p>jlkjlkj</p>",
       "user_id": "1",
       "id": 5,
+      "mandatory": true,
       "approved": 0
     },
     {
-      "title": "testing",
+      "title": "testing5",
       "content": "<h1><strong>Hello !</strong></h1><h2>Hey!</h2><h3>Hi</h3><p>Hello my guy !</p><p><br></p><p><strong>Stop man !</strong></p><p><strong><em><u>What?</u></em></strong></p><p><u>wait</u></p><p><a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">google</a></p><p>List</p><ol><li>stap</li><li>stop</li><li>stip</li><li>step</li><li>stup</li></ol><p>Helo</p><ul><li>Hello</li><li>Hey</li></ul><p>jlkjlkj</p>",
       "user_id": "1",
       "id": 6,
+      "mandatory": true,
       "approved": 0
     },
     {
-      "title": "testing",
+      "title": "testing6",
       "content": "<h1><strong>Hello !</strong></h1><h2>Hey!</h2><h3>Hi</h3><p>Hello my guy !</p><p><br></p><p><strong>Stop man !</strong></p><p><strong><em><u>What?</u></em></strong></p><p><u>wait</u></p><p><a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">google</a></p><p>List</p><ol><li>stap</li><li>stop</li><li>stip</li><li>step</li><li>stup</li></ol><p>Helo</p><ul><li>Hello</li><li>Hey</li></ul><p>jlkjlkj</p>",
       "user_id": "1",
       "id": 7,
+      "mandatory": false,
       "approved": 0
     },
     {
-      "title": "testing",
+      "title": "testing7",
       "content": "<h1><strong>Hello !</strong></h1><h2>Hey!</h2><h3>Hi</h3><p>Hello my guy !</p><p><br></p><p><strong>Stop man !</strong></p><p><strong><em><u>What?</u></em></strong></p><p><u>wait</u></p><p><a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">google</a></p><p>List</p><ol><li>stap</li><li>stop</li><li>stip</li><li>step</li><li>stup</li></ol><p>Helo</p><ul><li>Hello</li><li>Hey</li></ul><p>jlkjlkj</p>",
       "user_id": "1",
       "id": 8,
+      "mandatory": false,
       "approved": 0
     },
     {
-      "title": "testing",
+      "title": "testing8",
       "content": "<h1><strong>Hello !</strong></h1><h2>Hey!</h2><h3>Hi</h3><p>Hello my guy !</p><p><br></p><p><strong>Stop man !</strong></p><p><strong><em><u>What?</u></em></strong></p><p><u>wait</u></p><p><a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">google</a></p><p>List</p><ol><li>stap</li><li>stop</li><li>stip</li><li>step</li><li>stup</li></ol><p>Helo</p><ul><li>Hello</li><li>Hey</li></ul><p>jlkjlkj</p>",
       "user_id": "1",
       "id": 9,
+      "mandatory": false,
       "approved": 0
     },
     {
-      "title": "testing",
+      "title": "testing9",
       "content": "<h1><strong>Hello !</strong></h1><h2>Hey!</h2><h3>Hi</h3><p>Hello my guy !</p><p><br></p><p><strong>Stop man !</strong></p><p><strong><em><u>What?</u></em></strong></p><p><u>wait</u></p><p><a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">google</a></p><p>List</p><ol><li>stap</li><li>stop</li><li>stip</li><li>step</li><li>stup</li></ol><p>Helo</p><ul><li>Hello</li><li>Hey</li></ul><p>jlkjlkj</p>",
       "user_id": "1",
       "id": 10,
+      "mandatory": false,
       "approved": 0
     },
     {
-      "title": "testing",
+      "title": "testing10",
       "content": "<h1><strong>Hello !</strong></h1><h2>Hey!</h2><h3>Hi</h3><p>Hello my guy !</p><p><br></p><p><strong>Stop man !</strong></p><p><strong><em><u>What?</u></em></strong></p><p><u>wait</u></p><p><a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">google</a></p><p>List</p><ol><li>stap</li><li>stop</li><li>stip</li><li>step</li><li>stup</li></ol><p>Helo</p><ul><li>Hello</li><li>Hey</li></ul><p>jlkjlkj</p>",
       "user_id": "1",
       "id": 11,
+      "mandatory": false,
       "approved": 0
     },
     {
-      "title": "testing",
+      "title": "testing11",
       "content": "<h1><strong>Hello !</strong></h1><h2>Hey!</h2><h3>Hi</h3><p>Hello my guy !</p><p><br></p><p><strong>Stop man !</strong></p><p><strong><em><u>What?</u></em></strong></p><p><u>wait</u></p><p><a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">google</a></p><p>List</p><ol><li>stap</li><li>stop</li><li>stip</li><li>step</li><li>stup</li></ol><p>Helo</p><ul><li>Hello</li><li>Hey</li></ul><p>jlkjlkj</p>",
       "user_id": "1",
       "id": 12,
+      "mandatory": false,
       "approved": 0
     },
     {
-      "title": "testing",
+      "title": "testing12",
       "content": "<h1><strong>Hello !</strong></h1><h2>Hey!</h2><h3>Hi</h3><p>Hello my guy !</p><p><br></p><p><strong>Stop man !</strong></p><p><strong><em><u>What?</u></em></strong></p><p><u>wait</u></p><p><a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">google</a></p><p>List</p><ol><li>stap</li><li>stop</li><li>stip</li><li>step</li><li>stup</li></ol><p>Helo</p><ul><li>Hello</li><li>Hey</li></ul><p>jlkjlkj</p>",
+      "mandatory": false,
       "user_id": "1",
       "id": 13,
       "approved": 0
     },
     {
-      "title": "Steps",
+      "title": "Steps13",
       "content": "<h1>An awesome step</h1>",
       "mandatory": true,
       "user_id": "1",
@@ -140,6 +153,33 @@
       "user_id": 1,
       "content": "stop !",
       "id": 6
+    }
+  ],
+  "usersteps": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "current": 1,
+      "step_list": [
+        1,
+        4
+      ],
+      "steps": [
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ]
     }
   ]
 }
