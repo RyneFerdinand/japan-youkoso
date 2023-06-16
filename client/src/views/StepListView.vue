@@ -54,7 +54,7 @@ export default {
       const response = await Step.getAll()
       const responseLength = this.filterApproved(response).length
       this.pageCount = Math.ceil(responseLength / 12)
-      console.log(response.length / 12)
+
       const tempSteps = await Step.getAll(this.page)
       this.page++
 

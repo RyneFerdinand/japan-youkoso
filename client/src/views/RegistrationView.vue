@@ -5,62 +5,61 @@
     </div>
     <div class="form-container">
       <div class="home-button">
-        <button class="home-btn" @click="goHome">&lt; Home</button>
+        <RouterLink class="home-btn" :to="{ name: 'home' }">&lt; Home</RouterLink>
       </div>
       <form @submit.prevent="register">
         <h1 class="form-header">Register!</h1>
-          <label for="name">Name</label>
-          <input type="text" id="name" v-model="formData.name" required />
-  
-          <label for="email">Email</label>
-          <input type="email" id="email" v-model="formData.email" required />
+        <label for="name">Name</label>
+        <input type="text" id="name" v-model="formData.name" required />
 
-  
-          <label for="dob">Date of Birth</label>
-          <input type="date" id="dob" v-model="formData.dob" required />
-  
-          <label for="gender">Gender</label>
-          <select id="gender" v-model="formData.gender" required>
-            <option value="">Select</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-  
-          <label for="age">Age</label>
-          <input type="number" id="age" v-model="formData.age" required />
+        <label for="email">Email</label>
+        <input type="email" id="email" v-model="formData.email" required />
 
-          <label for="password">Password</label>
-          <input type="password" id="password" v-model="formData.password" required />
-  
-          <label for="confirm-password">Confirm Password</label>
-          <input type="password" id="confirm-password" v-model="formData.confirmPassword" required />
-  
-          <button type="submit">Register</button>
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" v-model="formData.dob" required />
+
+        <label for="gender">Gender</label>
+        <select id="gender" v-model="formData.gender" required>
+          <option value="">Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="age">Age</label>
+        <input type="number" id="age" v-model="formData.age" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" v-model="formData.password" required />
+
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" v-model="formData.confirmPassword" required />
+
+        <button type="submit">Register</button>
       </form>
     </div>
   </div>
 </template>
-  
-  <script>
- // import axios from 'axios';
-  
-  export default {
-    name: 'RegistrationView',
-    data() {
-      return {
-        formData: {
-          name: '',
-          email: '',
-          dob: '',
-          gender: '',
-          age: '',
-          password: '',
-          confirmPassword: '',
-        },
-      };
-    },
-    /*methods:{
+
+<script>
+// import axios from 'axios';
+
+export default {
+  name: 'RegistrationView',
+  data() {
+    return {
+      formData: {
+        name: '',
+        email: '',
+        dob: '',
+        gender: '',
+        age: '',
+        password: '',
+        confirmPassword: ''
+      }
+    }
+  }
+  /*methods:{
       register() {
         // Send the registration data to the server
         axios.post('/api/register', this.formData)
@@ -72,10 +71,10 @@
           });
       },
     },*/
-  };
-  </script>
-  
-  <style scoped>
+}
+</script>
+
+<style scoped>
 .registration-page {
   display: flex;
   background: white;
@@ -123,7 +122,6 @@
   margin-top: 10px;
   font-size: 36px;
   margin-bottom: 20px;
-
 }
 
 form {
@@ -148,7 +146,7 @@ select {
   outline: none;
 }
 
-button[type="submit"] {
+button[type='submit'] {
   background: red;
   color: white;
   padding: 10px 20px;
@@ -158,5 +156,4 @@ button[type="submit"] {
   margin-top: 10px;
   align-self: flex-end;
 }
-
 </style>

@@ -50,7 +50,6 @@ const getAll = async (page = 0) => {
 const approve = async (id) => {
   try {
     const data = await getById(id)
-    console.log(data)
     const body = JSON.stringify({ ...data, approved: 1 })
 
     await fetch(`${url}/steps/${id}`, {
@@ -66,4 +65,71 @@ const approve = async (id) => {
   }
 }
 
-export default { create, getById, getAll, approve }
+const getNextByUserId = async (userId) => {
+  try {
+    const response = await fetch(`${url}/usersteps?usersteps.user_id=${userId}`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    return response.json()
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const getAllActiveSteps = async () => {
+  try {
+    const response = await fetch(`${url}/steps?approved=1`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    return response.json()
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const getUsersSteps = async (userId) => {
+  try {
+    const response = await fetch(`${url}/usersteps?usersteps.user_id=${userId}`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    return response.json()
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const updateUserStep = async (userStepObject) => {
+  const body = JSON.stringify(userStepObject)
+  try {
+    await fetch(`${url}/usersteps/${userStepObject.id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: body
+    })
+    return { success: true }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export default {
+  create,
+  getById,
+  getAll,
+  approve,
+  getNextByUserId,
+  getAllActiveSteps,
+  getUsersSteps,
+  updateUserStep
+}

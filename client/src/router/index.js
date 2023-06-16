@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import StepView from '../views/StepView.vue'
-import StepListView from '../views/StepListView.vue'
-import StepCreationView from '../views/StepCreationView.vue'
+
+import HomeView from '@/views/HomeView.vue'
+import StepView from '@/views/StepView.vue'
+import StepListView from '@/views/StepListView.vue'
+import StepCreationView from '@/views/StepCreationView.vue'
+import RoadmapView from '@/views/RoadmapView.vue'
 import RegistrationView from '../views/RegistrationView.vue'
 
 const router = createRouter({
@@ -28,10 +30,14 @@ const router = createRouter({
       name: 'step-create',
       component: StepCreationView
     },
-    
+    {
+      path: '/roadmap',
+      name: 'roadmap',
+      component: RoadmapView
+    },
     {
       path: '/register',
-      name:'register',
+      name: 'register',
       component: RegistrationView
     }
     // {
