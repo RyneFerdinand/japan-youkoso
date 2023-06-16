@@ -14,7 +14,7 @@
       "user_id": "1",
       "id": 2,
       "mandatory": false,
-      "approved": 0
+      "approved": 1
     },
     {
       "title": "testing2",
@@ -111,6 +111,22 @@
       "user_id": "1",
       "approved": 0,
       "id": 14
+    },
+    {
+      "title": "Create VISA",
+      "content": "<h1>Create VISA</h1><p><br></p><ol><li>Go to the office</li><li>Create VISA</li><li>Pay</li></ol>",
+      "mandatory": true,
+      "user_id": 1,
+      "approved": 0,
+      "id": 15
+    },
+    {
+      "title": "Create VISA",
+      "content": "<h1>Create Something</h1><p><br></p><ol><li>testing</li></ol>",
+      "mandatory": false,
+      "user_id": 1,
+      "approved": 0,
+      "id": 16
     }
   ],
   "users": [
@@ -169,6 +185,8 @@
         -1,
         -1,
         1,
+        -1,
+        -1,
         -1,
         -1,
         -1,

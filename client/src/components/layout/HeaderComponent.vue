@@ -41,13 +41,13 @@
             <RouterLink :to="{ name: 'step-list' }" class="hover:underline">Step</RouterLink>
           </li>
           <li>
-            <RouterLink :to="{ name: 'home' }" class="hover:underline">Roadmap</RouterLink>
+            <RouterLink :to="{ name: 'roadmap' }" class="hover:underline">Roadmap</RouterLink>
           </li>
           <li>
             <RouterLink
-              :to="{ name: 'home' }"
+              :to="{ name: 'register' }"
               class="border-2 border-highlight py-2 px-6 rounded-full font-bold text-highlight hover:bg-highlight hover:text-light transition-colors"
-              >Login</RouterLink
+              >Register</RouterLink
             >
           </li>
         </ul>

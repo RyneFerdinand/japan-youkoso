@@ -54,6 +54,11 @@ export default {
   font-weight: bold;
 }
 
+* {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
 .card-content a {
   color: #bc002d;
 }
