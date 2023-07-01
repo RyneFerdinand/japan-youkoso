@@ -5,17 +5,12 @@
         <img src="@/assets/japan.png" class="w-12 aspect-square" alt="Website Logo" />
         <h4 class="font-head-4 font-bold text-highlight">Japan Youkoso</h4>
       </RouterLink>
-      <button
-        class="md:hidden cursor-pointer hover:scale-110 z-50 transition-transform"
-        @click="toggleNav"
-      >
+      <button class="md:hidden cursor-pointer hover:scale-110 z-50 transition-transform" @click="toggleNav">
         <v-icon name="gi-hamburger-menu" scale="1.5" />
       </button>
-      <nav
-        id="nav"
+      <nav id="nav"
         class="items-center justify-center flex flex-col md:hidden w-screen h-screen inset-0 absolute bg-light"
-        v-show="this.showNav"
-      >
+        v-show="this.showNav">
         <ul class="list-none flex items-center gap-8 flex-col md:flex-row">
           <li>
             <RouterLink :to="{ name: 'home' }" class="hover:underline">Home</RouterLink>
@@ -24,11 +19,9 @@
             <RouterLink :to="{ name: 'home' }" class="hover:underline">Roadmap</RouterLink>
           </li>
           <li>
-            <RouterLink
-              :to="{ name: 'home' }"
-              class="border-2 border-highlight py-2 px-6 rounded-full font-bold text-highlight hover:bg-highlight hover:text-light transition-colors"
-              >Login</RouterLink
-            >
+            <RouterLink :to="{ name: 'home' }"
+              class="border-2 border-highlight py-2 px-6 rounded-full font-bold text-highlight hover:bg-highlight hover:text-light transition-colors">
+              Login</RouterLink>
           </li>
         </ul>
       </nav>
@@ -44,11 +37,12 @@
             <RouterLink :to="{ name: 'roadmap' }" class="hover:underline">Roadmap</RouterLink>
           </li>
           <li>
-            <RouterLink
-              :to="{ name: 'register' }"
+            <RouterLink :to="{ name: 'login' }"
               class="border-2 border-highlight py-2 px-6 rounded-full font-bold text-highlight hover:bg-highlight hover:text-light transition-colors"
-              >Register</RouterLink
-            >
+              v-if="!authStore.isLoggedIn">Login</RouterLink>
+            <button @click="logout"
+              class="border-2 border-highlight py-2 px-6 rounded-full font-bold text-highlight hover:bg-highlight hover:text-light transition-colors"
+              v-else>Logout</button>
           </li>
         </ul>
       </nav>
@@ -57,6 +51,8 @@
 </template>
 
 <script>
+import { useAuthStore } from '@/utils/store/auth'
+import { useToastStore } from '@/utils/store/toast'
 import { OhVueIcon } from 'oh-vue-icons'
 
 export default {
@@ -65,12 +61,24 @@ export default {
   },
   data() {
     return {
-      showNav: false
+      showNav: false,
+      authStore: {},
+      toastStore: {}
     }
+  },
+  created() {
+    this.authStore = useAuthStore()
+    this.toastStore = useToastStore()
+
   },
   methods: {
     toggleNav() {
       this.showNav = !this.showNav
+    },
+    logout() {
+      localStorage.setItem('uid', '')
+      this.authStore.logoutUser();
+      this.toastStore.setToast('Successfully logged out !', 'success')
     }
   }
 }

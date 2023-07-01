@@ -1,159 +1,115 @@
 <template>
-  <div class="registration-page">
-    <div class="image-container">
-      <img src="https://wallpapercave.com/wp/wp4118244.jpg" alt="Registration Image" />
-    </div>
-    <div class="form-container">
-      <div class="home-button">
-        <RouterLink class="home-btn" :to="{ name: 'home' }">&lt; Home</RouterLink>
-      </div>
-      <form @submit.prevent="register">
-        <h1 class="form-header">Register!</h1>
-        <label for="name">Name</label>
-        <input type="text" id="name" v-model="formData.name" required />
+  <div class="py-20 px-8">
+    <div class="bg-light shadow-xl mx-auto px-12 py-8 max-w-[28rem] rounded-md">
+      <form @submit.prevent="submitHandler" class="flex flex-col items-center gap-4">
+        <h1 class="text-head-2">Register</h1>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" v-model="formData.email" required />
+        <div class="flex flex-col mt-4 w-full">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            v-model="formData.name"
+            class="border-[1px] border-dark border-opacity-30 px-4 py-2 rounded-sm mt-2"
+            required
+          />
+        </div>
 
-        <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" v-model="formData.dob" required />
+        <div class="flex flex-col w-full">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            v-model="formData.email"
+            class="border-[1px] border-dark border-opacity-30 px-4 py-2 rounded-sm mt-2"
+            required
+          />
+        </div>
 
-        <label for="gender">Gender</label>
-        <select id="gender" v-model="formData.gender" required>
-          <option value="">Select</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
+        <div class="flex flex-col w-full">
+          <label for="dob">Date of Birth</label>
+          <input
+            type="text"
+            id="dob"
+            v-model="formData.dob"
+            class="border-[1px] border-dark border-opacity-30 px-4 py-2 rounded-sm mt-2"
+            required
+          />
+        </div>
 
-        <label for="age">Age</label>
-        <input type="number" id="age" v-model="formData.age" required />
+        <div class="flex flex-col w-full">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            v-model="formData.password"
+            class="border-[1px] border-dark border-opacity-30 px-4 py-2 rounded-sm mt-2"
+            required
+          />
+        </div>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="formData.password" required />
+        <div class="flex flex-col w-full">
+          <label for="password">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm-password"
+            v-model="formData.confirmPassword"
+            class="border-[1px] border-dark border-opacity-30 px-4 py-2 rounded-sm mt-2"
+            required
+          />
+        </div>
 
-        <label for="confirm-password">Confirm Password</label>
-        <input type="password" id="confirm-password" v-model="formData.confirmPassword" required />
-
-        <button type="submit">Register</button>
+        <button
+          class="w-full text-head-4 text-center border-[1px] border-highlight py-2 px-6 rounded-sm text-light font-bold bg-highlight hover:opacity-60 transition-opacity mt-3"
+        >
+          Register
+        </button>
       </form>
+      <p class="mt-4">
+        Already have an account ?
+        <RouterLink to="/login" class="text-highlight hover:underline">Login Here</RouterLink>
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-// import axios from 'axios';
+import User from '@/utils/request/users.js'
+import { useToastStore } from '@/utils/store/toast.js'
 
 export default {
   name: 'RegistrationView',
   data() {
     return {
       formData: {
-        name: '',
-        email: '',
-        dob: '',
-        gender: '',
-        age: '',
-        password: '',
-        confirmPassword: ''
+        name: 'Ryne',
+        email: 'ryne@mail.com',
+        dob: '2002-12-12',
+        gender: 'male',
+        password: 'testingtesting',
+        confirmPassword: 'testingtesting'
+      },
+      toastStore: {}
+    }
+  },
+  created() {
+    this.toastStore = useToastStore()
+  },
+  methods: {
+    async submitHandler() {
+      try {
+        const registerResponse = await User.register(this.formData)
+
+        if (registerResponse.data.success) {
+          this.toastStore.setToast(registerResponse.data.message, 'success')
+          this.$router.push('/login')
+        } else {
+          this.toastStore.setToast(registerResponse.data.message, 'error', true)
+        }
+      } catch (error) {
+          this.toastStore.setToast(error, 'error', true)
       }
     }
   }
-  /*methods:{
-      register() {
-        // Send the registration data to the server
-        axios.post('/api/register', this.formData)
-          .then(response => {
-            // Handle the response if needed
-          })
-          .catch(error => {
-            // Handle the error if needed
-          });
-      },
-    },*/
 }
 </script>
-
-<style scoped>
-.registration-page {
-  display: flex;
-  background: white;
-  color: black;
-  min-height: 100vh;
-}
-
-.image-container {
-  flex: 2;
-  height: 100vh;
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.form-container {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  justify-items: left;
-  margin-top: 50px;
-  padding-left: 15%;
-  padding-right: 15%;
-}
-
-.home-button {
-  margin-top: -40px;
-  margin-left: 20px;
-}
-
-.home-btn {
-  background: none;
-  border: none;
-  color: red;
-  cursor: pointer;
-  font-weight: regular;
-}
-
-.form-header {
-  text-align: left;
-  font-weight: 900;
-  margin-top: 10px;
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-form {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-label {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-input,
-select {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
-  border: 1px solid black;
-  border-radius: 5px;
-  outline: none;
-}
-
-button[type='submit'] {
-  background: red;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-  align-self: flex-end;
-}
-</style>

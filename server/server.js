@@ -13,6 +13,12 @@ app.use(cors());
 const userRouter = require("./routes/user");
 app.use("/user", userRouter);
 
+const stepRouter = require("./routes/step");
+app.use("/step", stepRouter);
+
+const commentRouter = require("./routes/comment");
+app.use("/comment", commentRouter);
+
 app.listen(port, () => {
   console.log(`Server is up, listening to port ${port}...`);
 });
