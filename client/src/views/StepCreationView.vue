@@ -5,34 +5,25 @@
       <form @submit.prevent="submitHandler">
         <div class="mt-8">
           <label class="font-bold">Title</label>
-          <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            v-model="title"
-            class="mt-4 w-full outline-none border-[0.1px] rounded-md px-4 py-3 border-dark flex items-center gap-2 border-opacity-20"
-          />
+          <input type="text" name="title" placeholder="Title" v-model="title"
+            class="mt-4 w-full outline-none border-[0.1px] rounded-md px-4 py-3 border-dark flex items-center gap-2 border-opacity-20" />
         </div>
         <div class="mt-6">
           <label class="font-bold">Content</label>
           <QuillEditor theme="snow" v-model:content="content" contentType="html" />
         </div>
         <div class="mt-6"><input type="checkbox" v-model="mandatory" /> Mandatory</div>
-        <button
-          type="submit"
-          class="text-center bg-light border-[1px] border-highlight w-full mt-6 py-2 rounded-sm text-highlight font-bold hover:bg-highlight hover:text-light transition-colors"
-        >
+        <button type="submit"
+          class="text-center bg-light border-[1px] border-highlight w-full mt-6 py-2 rounded-sm text-highlight font-bold hover:bg-highlight hover:text-light transition-colors">
           Create
         </button>
       </form>
-    </div>
-    <div>
-      {{ content }}
     </div>
   </main>
 </template>
 
 <script>
+import { useAuthStore } from '@/utils/store/auth.js'
 import { QuillEditor } from '@vueup/vue-quill'
 import Step from '@/utils/request/steps.js'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
@@ -45,8 +36,12 @@ export default {
     return {
       title: '',
       content: '',
-      mandatory: false
+      mandatory: false,
+      authStore: {}
     }
+  },
+  created() {
+    this.authStore = useAuthStore()
   },
   methods: {
     async submitHandler() {
@@ -54,11 +49,17 @@ export default {
         title: this.title,
         content: this.content,
         mandatory: this.mandatory,
-        user_id: 1,
-        approved: 0
+        user_id: this.authStore.user._id
       }
-      await Step.create(stepObject)
-      this.$router.push('/step/list')
+
+      try {
+        const response = await Step.create(stepObject)
+        if (response.data.success) {
+          this.$router.push('/step/list')
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 }

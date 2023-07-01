@@ -1,33 +1,13 @@
-const url = 'http://127.0.0.1:5000'
+import Http from '@/utils/request/Http'
 
-const getByStepId = async (id) => {
-  try {
-    const response = await fetch(`${url}/comments?step_id=${id}&_sort=id&_order=desc`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-    return response.json()
-  } catch (error) {
-    console.error(error)
-  }
+export default {
+    async create(commentObject) {
+        return await Http.post('/comment', commentObject)
+    },
+    async voteByUserId(id, voteObject) {
+        return await Http.post(`/comment/${id}/vote`, voteObject)
+    },
+    async getVotesById(id) {
+        return await Http.get(`/comment/${id}/vote`);
+    }
 }
-
-const create = async (commentObject) => {
-  try {
-    const body = JSON.stringify(commentObject)
-    const response = await fetch(`${url}/comments`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: body
-    })
-    return response.json()
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-export default { getByStepId, create }
