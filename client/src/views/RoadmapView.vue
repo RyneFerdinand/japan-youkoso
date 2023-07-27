@@ -96,36 +96,35 @@ export default {
 
       const userResponse = await Step.getUserSelection(this.authStore.user._id);
 
-      this.userSelectedSteps = userResponse.data.doneSteps
+      if (userResponse.data.doneSteps) {
+        this.userSelectedSteps = userResponse.data.doneSteps
+      }
+
       if (userResponse.data.steps?.length > 0) {
         const allDoneUserSteps = userResponse.data.steps
 
-        this.allAvailableStepsForSelect =
-          this.allAvailableStepsForSelect
-            .map((availableStep) => {
-              for (let index = 0; index < allDoneUserSteps.length; index++) {
-                const element = allDoneUserSteps[index];
-                if (availableStep._id === element._id) {
-                  return null;
-                }
-              }
-              console.log(availableStep)
-              return availableStep
-            })
-            .filter(step => step !== null);
+        this.allAvailableStepsForSelect = this.allAvailableStepsForSelect.map((availableStep) => {
+          for (let index = 0; index < allDoneUserSteps.length; index++) {
+            const element = allDoneUserSteps[index];
+            if (availableStep._id === element._id) return null;
+          }
+          return availableStep
+        }).filter(step => step !== null);
 
-        this.allSkippedSteps = allDoneUserSteps.filter(step => {
+        this.allSkippedSteps = activeSteps.filter(step => {
           for (let index = 0; index < this.userSelectedSteps.length; index++) {
             const element = this.userSelectedSteps[index];
-            if (step._id !== element._id) return step
-            else return null
+
+            if (step._id === element._id) return null;
           }
+          return step;
+
         }).filter(step => step !== null)
       }
 
       this.currentlySelectedStep = this.getNextStep()
-
       this.isLoading = false
+
     } catch (error) {
       console.error(error)
     }
@@ -142,7 +141,7 @@ export default {
         this.isMandatory = true
 
         // put it into the steps that the user selected
-        this.userSelectedSteps.push(step)
+        this.userSelectedSteps?.push(step)
 
         this.allAvailableStepsForSelect.splice(index, 1)
         return step
@@ -167,19 +166,27 @@ export default {
       }
     },
     async skipStep() {
-      try {
-        const response = await Step.skipStep(this.currentlySelectedStep._id, this.authStore.user._id)
-        if (response.data.success) {
-          this.allAvailableStepsForSelect.push(this.currentlySelectedStep);
-          this.userSelectedSteps.pop();
-          this.currentlySelectedStep = this.getNextStep()
-          this.toastStore.setToast(response.data.message, 'success', true)
+
+      if (this.allAvailableStepsForSelect.length === 0) {
+        this.currentlySelectedStep = null;
+        this.isMandatory = false;
+        this.isRecommend = false;
+      } else {
+        try {
+          const response = await Step.skipStep(this.currentlySelectedStep._id, this.authStore.user._id)
+          if (response.data.success) {
+            this.allAvailableStepsForSelect.push(this.currentlySelectedStep);
+            this.userSelectedSteps.pop();
+            this.currentlySelectedStep = this.getNextStep()
+            this.toastStore.setToast(response.data.message, 'success', true)
+          }
+        } catch (error) {
+          console.error(error)
         }
-      } catch (error) {
-        console.error(error)
       }
+
     },
-    finishProcess() {
+    async finishProcess() {
       this.isRecommend = false
       this.isFinished = true
       this.currentlySelectedStep = null;
@@ -189,9 +196,25 @@ export default {
 
           if (idx === this.allAvailableStepsForSelect.length - 1) {
             this.toastStore.setToast('All steps finished !', 'success', true)
-          }
+            const response = await Step.getAllWeightedActiveSteps()
+            const activeSteps = response.data.steps
 
+            this.allAvailableStepsForSelect = activeSteps.sort((a, b) => (a['weight'] > b['weight'] ? -1 : 1))
+
+            this.allSkippedSteps = activeSteps.filter(step => {
+              for (let index = 0; index < this.userSelectedSteps.length; index++) {
+                const element = this.userSelectedSteps[index];
+
+                if (step._id === element._id) return null;
+              }
+              return step;
+
+            }).filter(step => step !== null)
+          }
         });
+
+
+
       } catch (error) {
         console.error(error)
       }
@@ -202,10 +225,12 @@ export default {
         this.allAvailableStepsForSelect.splice(index, 1)
       }
       this.currentlySelectedStep = step
+      this.isMandatory = step.mandatory
       this.isRecommend = false
     },
     goToStep(step) {
       this.currentlySelectedStep = step
+      this.isMandatory = step.mandatory
     }
   }
 }

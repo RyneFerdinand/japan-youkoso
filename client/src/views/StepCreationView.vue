@@ -69,4 +69,49 @@ export default {
 .ql-editor {
   min-height: 30rem;
 }
+
+.ql-editor h1 {
+  font-size: 3rem !important;
+}
+
+.ql-editor h2 {
+  font-size: 2.25rem !important;
+}
+
+.ql-editor h3 {
+  font-size: 1.5rem !important;
+}
+
+.ql-editor h4 {
+  font-size: 1.25rem !important;
+}
+
+.ql-editor a {
+  color: #bc002d !important;
+}
+
+.ql-editor p {
+  font-size: 1rem !important;
+  font-weight: normal !important;
+}
+
+.ql-editor a:hover {
+  font-size: 1rem !important;
+  text-decoration: underline !important;
+}
+
+.ql-editor a:visited {
+  font-size: 1rem !important;
+  opacity: 60% !important;
+}
+
+.ql-editor ul {
+  font-size: 1rem !important;
+  list-style: disc !important;
+}
+
+.ql-editor ol {
+  font-size: 1rem !important;
+  list-style: decimal !important;
+}
 </style>

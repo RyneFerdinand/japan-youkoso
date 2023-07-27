@@ -4,7 +4,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 
 router.post("/register", async (req, res) => {
-  const { name, email, dob, gender, password } = req.body;
+  const { name, email, dob, password } = req.body;
   let isUniqueEmail = false;
 
   try {
@@ -18,7 +18,6 @@ router.post("/register", async (req, res) => {
     name.length === 0 ||
     email.length === 0 ||
     dob.length === 0 ||
-    gender.length === 0 ||
     password.length === 0
   ) {
     res.send({ success: false, message: "All data must be inputted" });
@@ -36,7 +35,7 @@ router.post("/register", async (req, res) => {
       if (err) {
         res.send({ success: false, message: "Register Unsuccessfull" });
       } else {
-        const newUser = new User({ name, email, dob, gender, password: hash });
+        const newUser = new User({ name, email, dob, password: hash, isAdmin: false });
 
         try {
           await newUser.save();

@@ -39,5 +39,5 @@ export default {
   },
   async getUserSelection(userId) {
     return await Http.get(`/step/user/${userId}`);
-  }
+  },
 }

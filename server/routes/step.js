@@ -17,7 +17,7 @@ router.post("/:id/user/:user_id/:type", async (req, res) => {
 
   try {
     let userStep = await UserStep.findOne({ step_id: id, user_id });
-    console.log(userStep)
+
     if (!userStep) {
       userStep = new UserStep({ step_id: id, user_id: user_id, status: statusValue })
     } else {
@@ -98,7 +98,6 @@ router.get("/user/:user_id", async (req, res) => {
     let ctr = 0;
     userSteps.forEach(async (step, idx) => {
       try {
-        console.log(idx, steps.length, userSteps.length)
         const foundStep = await Step.findOne({ '_id': step.step_id })
         if (step.status === 1) {
           doneSteps.push(foundStep)

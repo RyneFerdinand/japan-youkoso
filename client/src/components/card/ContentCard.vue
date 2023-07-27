@@ -10,7 +10,7 @@
     <div>
       <h1 class="text-head-1 text-highlight" v-if="this.type === 'step'">{{ content?.title }}</h1>
       <h4 class="text-head-4" v-if="this.type === 'comment'">{{ content.user?.name }}</h4>
-      <p class="mt-4 card-content" v-html="content?.content"></p>
+      <p class="mt-4 card-content card-content-card" v-html="content?.content"></p>
     </div>
   </div>
 </template>
@@ -88,7 +88,6 @@ export default {
       }
 
       const response = await this.request.voteByUserId(this.content._id, voteObject);
-      console.log(response)
 
       this.voteCount += (response.data.vote - this.voteStatus)
       this.voteStatus = response.data.vote;
@@ -99,35 +98,6 @@ export default {
 </script>
 
 <style>
-.card-content h1 {
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-.card-content h2 {
-  font-size: 2.25rem;
-  font-weight: bold;
-}
-
-.card-content h3 {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.card-content h4 {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.card-content * {
-  font-size: 1rem;
-  font-weight: normal;
-}
-
-.card-content a {
-  color: #bc002d;
-}
-
 .card-content a:hover {
   text-decoration: underline;
 }
@@ -141,6 +111,50 @@ export default {
 }
 
 .card-content ol {
+  list-style: decimal;
+}
+
+.card-content-card h1 {
+  font-size: 3rem;
+}
+
+.card-content-card h2 {
+  font-size: 2.25rem;
+}
+
+.card-content-card h3 {
+  font-size: 1.5rem;
+}
+
+.card-content-card h4 {
+  font-size: 1.25rem;
+}
+
+.card-content-card a {
+  font-size: 1rem;
+  color: #bc002d;
+}
+
+.card-content-card p {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.card-content-card a:hover {
+  text-decoration: underline;
+}
+
+.card-content-card a:visited {
+  opacity: 60%;
+}
+
+.card-content-card ul {
+  font-size: 1rem;
+  list-style: disc;
+}
+
+.card-content-card ol {
+  font-size: 1rem;
   list-style: decimal;
 }
 </style>

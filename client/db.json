@@ -134,7 +134,6 @@
       "name": "John Doe",
       "email": "john@mail.com",
       "password": "testing123",
-      "gender": "male",
       "role": "user",
       "id": 1
     }

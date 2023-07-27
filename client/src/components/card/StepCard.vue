@@ -68,6 +68,8 @@ export default {
       }
     },
     async vote(voteType) {
+      if (!this.authStore.isLoggedIn) return;
+
       let voteObject = {
         vote: voteType === 'upvote' ? 1 : -1,
         user_id: this.authStore.user._id,

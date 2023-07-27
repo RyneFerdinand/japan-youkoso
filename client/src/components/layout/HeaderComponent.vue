@@ -9,19 +9,25 @@
         <v-icon name="gi-hamburger-menu" scale="1.5" />
       </button>
       <nav id="nav"
-        class="items-center justify-center flex flex-col md:hidden w-screen h-screen inset-0 absolute bg-light"
-        v-show="this.showNav">
+        class="z-10 items-center justify-center flex flex-col md:hidden w-screen h-screen inset-0 absolute bg-light"
+        v-show="this.showNav" @click="triggerClose">
         <ul class="list-none flex items-center gap-8 flex-col md:flex-row">
           <li>
             <RouterLink :to="{ name: 'home' }" class="hover:underline">Home</RouterLink>
           </li>
           <li>
-            <RouterLink :to="{ name: 'home' }" class="hover:underline">Roadmap</RouterLink>
+            <RouterLink :to="{ name: 'step-list' }" class="hover:underline">Step</RouterLink>
+          </li>
+          <li v-if="authStore.isLoggedIn">
+            <RouterLink :to="{ name: 'roadmap' }" class="hover:underline">Roadmap</RouterLink>
           </li>
           <li>
-            <RouterLink :to="{ name: 'home' }"
+            <RouterLink v-if="!authStore.isLoggedIn" :to="{ name: 'login' }"
               class="border-2 border-highlight py-2 px-6 rounded-full font-bold text-highlight hover:bg-highlight hover:text-light transition-colors">
               Login</RouterLink>
+            <button @click="logout"
+              class="border-2 border-highlight py-2 px-6 rounded-full font-bold text-highlight hover:bg-highlight hover:text-light transition-colors"
+              v-else>Logout</button>
           </li>
         </ul>
       </nav>
@@ -33,7 +39,7 @@
           <li>
             <RouterLink :to="{ name: 'step-list' }" class="hover:underline">Step</RouterLink>
           </li>
-          <li>
+          <li v-if="authStore.isLoggedIn">
             <RouterLink :to="{ name: 'roadmap' }" class="hover:underline">Roadmap</RouterLink>
           </li>
           <li>
@@ -78,7 +84,11 @@ export default {
     logout() {
       localStorage.setItem('uid', '')
       this.authStore.logoutUser();
-      this.toastStore.setToast('Successfully logged out !', 'success')
+      this.toastStore.setToast('Successfully logged out !', 'success', true)
+      this.$router.push('/')
+    },
+    triggerClose() {
+      this.showNav = false
     }
   }
 }

@@ -37,8 +37,10 @@ export default {
   data() {
     return {
       formData: {
-        email: 'ryne@mail.com',
-        password: 'testingtesting'
+        // email: 'ryne@mail.com',
+        // password: 'testingtesting'
+        email: '',
+        password: ''
       },
       authStore: {},
       toastStore: {}

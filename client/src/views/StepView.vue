@@ -58,10 +58,8 @@ export default {
       delete step['user_id']
       step.comments = [];
 
-      console.log(stepId)
       const commentResponse = await Step.getCommentById(stepId)
       let tempComments = commentResponse.data.comments;
-      console.log(tempComments)
 
       tempComments.forEach(async (comment, idx) => {
         const userResponse = await User.getById(comment['user_id'])
